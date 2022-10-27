@@ -20,17 +20,16 @@ const lista = {
 const items = lista.items;
 
 app.get("/products", (req, res) => {
-  res.send(lista.items);
+  res.send(items);
 });
 
 app.get("/precio/:precio", (req, res) => {
   res.send(items.filter((item) => item.precio == req.params.precio));
 });
 
-app.get("/rango/:rango", (req, res) => {
-  const rango = req.params.precio > 50 && req.params.precio < 250;
-  console.log(rango)
-  res.send(items.filter((item) => rango == req.params.precio));
+app.get("/rango", (req, res) => {
+  console.log(req)
+  res.send(items.filter((item) => item.precio >= 50 && items.precio <= 250));
 });
 
 app.post("/products", (req, res) => {
